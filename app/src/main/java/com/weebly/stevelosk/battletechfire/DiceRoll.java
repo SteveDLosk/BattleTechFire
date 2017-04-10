@@ -1,5 +1,8 @@
 package com.weebly.stevelosk.battletechfire;
 
+import android.content.Context;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -28,6 +31,7 @@ public class DiceRoll extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 rollDice();
+                playSound();
             }
         });
     }
@@ -44,4 +48,10 @@ public class DiceRoll extends AppCompatActivity {
         rView.setText(outputText);
     }
 
+    private void playSound() {
+        Context ctx = getApplicationContext();
+        MediaPlayer mPlayer = MediaPlayer.create(ctx, R.raw.roll);
+        mPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        mPlayer.start();
+    }
 }
