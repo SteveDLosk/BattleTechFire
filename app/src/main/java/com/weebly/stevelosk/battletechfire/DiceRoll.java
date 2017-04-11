@@ -5,6 +5,7 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.SurfaceHolder;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -48,8 +49,25 @@ public class DiceRoll extends AppCompatActivity {
     }
 
     private void playSound() {
+
+        // Create MediaPlayer and context objects
         Context ctx = getApplicationContext();
-        MediaPlayer mPlayer = MediaPlayer.create(ctx, R.raw.roll);
+        MediaPlayer mPlayer;
+
+        // random int to select sound, four options
+        int choice = r.nextInt(4);
+
+        // assign sound to MediaPlayer
+        if (choice == 0)
+            mPlayer = MediaPlayer.create(ctx, R.raw.roll0);
+        else if (choice == 1)
+            mPlayer = MediaPlayer.create(ctx, R.raw.roll1);
+        else if (choice == 2)
+            mPlayer = MediaPlayer.create(ctx, R.raw.roll2);
+        else
+            mPlayer = MediaPlayer.create(ctx, R.raw.roll3);
+
+        // play sound
         mPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
         mPlayer.start();
     }
