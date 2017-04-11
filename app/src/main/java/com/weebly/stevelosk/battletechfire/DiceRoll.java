@@ -17,7 +17,6 @@ public class DiceRoll extends AppCompatActivity {
     Random r = new Random();
     ImageButton mButton = null;
     TextView rView = null;
-    //TextView resultTextView = (TextView) findViewById(R.id.rollResult);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
